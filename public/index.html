@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>Atelier demo</title>
+    <link href="/design-tokens.css" rel="stylesheet" />
+    <link href="/demo.css" rel="stylesheet" />
+    <script type="module" src="/bundle.js"></script>
+  </head>
+  <body>
+    <article>
+      <h3>Field</h3>
+      <form method="POST" action="/submit-demo">
+        <atelier-field label="Prénom" name="firstName" required></atelier-field>
+        <atelier-field
+          label="Courriel"
+          name="email"
+          type="email"
+        ></atelier-field>
+        <atelier-field
+          label="Téléphone"
+          name="phone"
+          type="tel"
+        ></atelier-field>
+        <button type="submit">Submit</button>
+        <atelier-button type="button">CLICKEZ MOI</atelier-button>
+      </form>
+
+      <script>
+        const validators = {
+          firstName: [
+            {
+              isValid: value => value !== '',
+              message: 'Le prénom doit être renseigné'
+            },
+            {
+              isValid: value => value !== 'toto',
+              message: 'Le prénom doit être réaliste'
+            }
+          ]
+        }
+        const firstNameField = document.querySelector('form atelier-field[name="firstName"]');
+        firstNameField.validators = validators.firstName;
+      </script>
+    </article>
+
+    <article>
+      <h3>Button</h3>
+      <atelier-button type="button">CLICKEZ MOI</atelier-button>
+    </article>
+  </body>
+</html>

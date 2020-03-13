@@ -1,0 +1,24 @@
+html {
+  --white: white;
+  --dark: black;
+  --primary: green;
+  --secondary: aliceblue;
+  --warning: red;
+  --text-color: var(--dark);
+  --background-color: var(--white);
+  --font-family: Roboto;
+  --xxs: 4px;
+  --xs: 8px;
+  --s: 12px;
+  --m: 16px;
+  --l: 32px;
+  --xl: 64px;
+  --xxl: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --text-color: var(--white);
+    --background-color: var(--dark);
+  }
+}
