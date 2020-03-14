@@ -34,16 +34,18 @@
         const validators = {
           firstName: [
             {
-              isValid: value => value !== '',
-              message: 'Le prénom doit être renseigné'
+              isValid: value => value !== "",
+              message: "Le prénom doit être renseigné"
             },
             {
-              isValid: value => value !== 'toto',
-              message: 'Le prénom doit être réaliste'
+              isValid: value => value !== "toto",
+              message: "Le prénom doit être réaliste"
             }
           ]
-        }
-        const firstNameField = document.querySelector('form atelier-field[name="firstName"]');
+        };
+        const firstNameField = document.querySelector(
+          'form atelier-field[name="firstName"]'
+        );
         firstNameField.validators = validators.firstName;
       </script>
     </article>

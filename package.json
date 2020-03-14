@@ -2,14 +2,22 @@
   "name": "atelier-element",
   "description": "Atelier is a web component library that use simplicity for fast building applications.",
   "scripts": {
-    "start": "webpack-dev-server"
+    "webpack": "webpack-dev-server",
+    "start": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "lit-element": "^2.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@storybook/addon-backgrounds": "^5.3.17",
+    "@storybook/addon-viewport": "^5.3.17",
+    "@storybook/html": "^5.3.17",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
