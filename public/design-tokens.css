@@ -1,23 +1,72 @@
 html {
   --white: white;
-  --dark: black;
+  --dark: #1f1f1f;
+
   --primary: green;
   --secondary: aliceblue;
-  --warning: red;
+
+  --sucess: green;
+  --warning: orange;
+  --error: red;
   --text-color: var(--dark);
+  --text-color-heading: var(--dark);
   --background-color: var(--white);
-  --font-family: Roboto;
-  --xxs: 4px;
-  --xs: 8px;
-  --s: 12px;
-  --m: 16px;
-  --l: 32px;
-  --xl: 64px;
-  --xxl: 64px;
+  --font-primary: "Sen", sans-serif;
+  --font-secondary: "Roboto Slab", serif;
+
+  --breakpoint-m: 1200px;
+  --breakpoint-s: 600px;
+
+  --space-unit: 1em;
+  --xxs: calc(0.25 * var(--space-unit));
+  --xs: calc(0.5 * var(--space-unit));
+  --sm: calc(0.75 * var(--space-unit));
+  --md: calc(1.25 * var(--space-unit));
+  --lg: calc(2 * var(--space-unit));
+  --xl: calc(3.25 * var(--space-unit));
+  --xxl: calc(5.25 * var(--space-unit));
+
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.2;
+
+  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-s: calc(1em / var(--text-scale-ratio));
+  --text-m: calc(1em * var(--text-scale-ratio));
+  --text-l: calc(1em * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-xl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio)
+  );
+  --text-xxl: calc(
+    1em * var(--text-scale-ratio) * var(--text-scale-ratio) *
+      var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
+
+  --heading-line-height: 1.2;
+  --body-line-height: 1.4;
+}
+
+@media (min-width: 600px) {
+  html {
+    --heading-line-height: 1.5;
+    --space-unit: 1.25em;
+    --text-base-size: 1.25em;
+    --text-scale-ratio: 1.25;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    --heading-line-height: 2;
+    --space-unit: 1.5em;
+    --text-base-size: 1.25em;
+    --text-scale-ratio: 1.25;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
+    --text-color-heading: var(--primary);
     --text-color: var(--white);
     --background-color: var(--dark);
   }

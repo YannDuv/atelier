@@ -100,7 +100,7 @@ export default class AtelierElement extends LitElement {
       this.internals.setValidity({ customError: true }, v.message);
       isValid = false;
       break;
-    };
+    }
 
     return isValid && this.internals.checkValidity();
   }

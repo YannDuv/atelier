@@ -3,7 +3,7 @@ import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 addParameters({
   backgrounds: [
-    { name: "Dark", value: "black", default: true },
+    { name: "Dark", value: "#1f1f1f", default: true },
     { name: "Light", value: "white" }
   ],
   viewport: {
