@@ -1,4 +1,4 @@
-import "../src/index";
+import "../../index";
 
 export default {
   title: "Form/Field",

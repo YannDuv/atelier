@@ -1,3 +1,3 @@
-import "./components/atelier-button.ts";
-import "./components/atelier-field.ts";
-import "./components/text/Text.component";
+import "./components/Button/Button.component";
+import "./components/Field/Field.component";
+import "./components/Text/Text.component";
