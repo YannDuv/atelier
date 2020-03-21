@@ -1,9 +1,5 @@
 import { html, LitElement, css, customElement, property } from "lit-element";
-
-type Validator = {
-  isValid: (value: string) => boolean;
-  message: string;
-};
+import { Validator } from "../FormTypes";
 
 @customElement("atelier-field")
 export default class AtelierElement extends LitElement {
@@ -61,7 +57,7 @@ export default class AtelierElement extends LitElement {
   }
 
   formAssociatedCallback() {
-    console.log("Form associated.");
+    // console.log("Form associated.");
   }
 
   update(changedProperties: any) {

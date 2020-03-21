@@ -26,27 +26,34 @@
           name="phone"
           type="tel"
         ></atelier-field>
+        <atelier-rate name="test-rate" label="Votre note :"></atelier-rate>
         <button type="submit">Submit</button>
         <atelier-button type="button">CLICKEZ MOI</atelier-button>
       </form>
 
       <script>
-        const validators = {
-          firstName: [
-            {
-              isValid: value => value !== "",
-              message: "Le prénom doit être renseigné"
-            },
-            {
-              isValid: value => value !== "toto",
-              message: "Le prénom doit être réaliste"
-            }
-          ]
-        };
         const firstNameField = document.querySelector(
           'form atelier-field[name="firstName"]'
         );
-        firstNameField.validators = validators.firstName;
+        const rateField = document.querySelector(
+          'form atelier-rate[name="test-rate"]'
+        );
+        rateField.validators = [
+          {
+            isValid: value => value !== undefined,
+            message: "Il faut voter !"
+          }
+        ];
+        firstNameField.validators = [
+          {
+            isValid: value => value !== "",
+            message: "Le prénom doit être renseigné"
+          },
+          {
+            isValid: value => value !== "toto",
+            message: "Le prénom doit être réaliste"
+          }
+        ];
       </script>
     </article>
 

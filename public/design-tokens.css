@@ -2,12 +2,17 @@ html {
   --white: white;
   --dark: #1f1f1f;
 
-  --primary: green;
-  --secondary: aliceblue;
+  --primary: #52d1ca;
+  --secondary: #ffd000;
 
   --sucess: green;
   --warning: orange;
   --error: red;
+
+  --light-grey: #b6b6b6;
+  --grey: #969696;
+  --dark-grey: #525252;
+
   --text-color: var(--dark);
   --text-color-heading: var(--dark);
   --background-color: var(--white);
