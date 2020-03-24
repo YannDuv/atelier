@@ -1,13 +1,25 @@
 {
   "name": "@yannduval/atelier",
   "description": "Atelier is a web component library that use simplicity for fast building applications.",
+  "version": "0.0.2",
+  "private": false,
+  "keywords": [
+    "lit-element",
+    "web-components",
+    "design-system"
+  ],
+  "author": "Yann Duval <yann.duval@gmx.fr>",
   "scripts": {
     "start": "start-storybook -p 6006 -s public",
     "build": "$(npm bin)/webpack --mode=production",
-    "build:watch": "webpack-dev-server"
+    "build:watch": "webpack-dev-server",
+    "prepare": "npm run build"
   },
   "main": "./src/index.ts",
   "module": "./src/index.ts",
+  "files": [
+    "dist/bundle.js"
+  ],
   "dependencies": {
     "lit-element": "^2.2.1"
   },
