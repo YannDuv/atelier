@@ -7,4 +7,4 @@ export default {
 };
 
 export const TextField = () =>
-  '<atelier-field label="Prénom" name="firstName" required></atelier-field>';
+  '<atelier-field label="Prénom" name="firstName" placeholder="Jean Claude, Robert" required></atelier-field>';

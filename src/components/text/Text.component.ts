@@ -18,29 +18,34 @@ export default class AtelierElement extends LitElement {
     return css`
       h1 {
         font-size: var(--text-xxl);
+        margin-bottom: var(--md);
       }
       h2 {
         font-size: var(--text-xl);
+        margin-bottom: var(--sm);
       }
       h3 {
         font-size: var(--text-l);
+        margin-bottom: var(--xs);
       }
       h4 {
         font-size: var(--text-m);
+        margin-bottom: var(--xxs);
       }
       h1,
       h2,
       h3,
       h4 {
         margin-top: 0;
-        margin-bottom: var(--xxs);
         font-family: var(--font-primary);
         line-height: var(--heading-line-height);
         color: var(--text-color-heading);
       }
       p,
       quote,
+      label,
       span {
+        font-size: var(--text-m);
         margin-top: 0;
         font-family: var(--font-secondary);
       }

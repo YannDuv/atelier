@@ -1,11 +1,13 @@
 {
-  "name": "atelier-element",
+  "name": "@yannduval/atelier",
   "description": "Atelier is a web component library that use simplicity for fast building applications.",
   "scripts": {
-    "webpack": "webpack-dev-server",
     "start": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook"
+    "build": "$(npm bin)/webpack --mode=production",
+    "build:watch": "webpack-dev-server"
   },
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "dependencies": {
     "lit-element": "^2.2.1"
   },

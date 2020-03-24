@@ -46,11 +46,27 @@ export default class AtelierElement extends LitElement {
   static get styles() {
     return css`
       .rate-field {
+        display: flex;
+        color: var(--text-color);
         margin-bottom: var(--md);
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      :host {
+        display: block;
+      }
+      :host(:focus) {
+        outline-offset: 2px;
+        outline: var(--primary) solid 2px;
+      }
+      atelier-text {
+        flex: 0 0 200px;
+        display: flex;
       }
       .stars {
         display: flex;
         margin: var(--xs) 0;
+        flex: 0 1 500px;
       }
       button {
         position: relative;
@@ -59,6 +75,16 @@ export default class AtelierElement extends LitElement {
         border: none;
         outline: none;
         padding: 0 var(--sm) 0 0;
+        transition: filter 200ms ease-out;
+      }
+      button:focus {
+        transition: filter 400ms ease-in;
+        filter: drop-shadow(2px 4px 6px var(--primary));
+      }
+      @media (max-width: 500px) {
+        .stars {
+          justify-content: space-around;
+        }
       }
       svg {
         flex: 1;
@@ -163,9 +189,8 @@ export default class AtelierElement extends LitElement {
     return html`
       <div class="rate-field">
         <atelier-text tag="label">${this.label}</atelier-text>
-        <div class="stars" tabindex="0">
+        <div class="stars">
           ${this.hearts.map(i => this.renderHeart(i, this.rate))}
-          <div></div>
         </div>
       </div>
     `;

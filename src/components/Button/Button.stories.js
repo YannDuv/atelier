@@ -7,4 +7,4 @@ export default {
 };
 
 export const Button = () =>
-  '<atelier-button type="button">CLICKEZ MOI</atelier-button>';
+  '<atelier-button type="button">Clickez moi</atelier-button>';

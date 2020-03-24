@@ -15,6 +15,9 @@ export default class AtelierElement extends LitElement {
   @property({ type: String })
   label?: string;
 
+  @property({ type: String })
+  placeholder?: string;
+
   @property({
     type: String,
     hasChanged: () => true
@@ -25,17 +28,41 @@ export default class AtelierElement extends LitElement {
     return css`
       :host {
         display: flex;
-        flex-direction: column;
-        margin-bottom: var(--m);
+        margin-bottom: var(--md);
         color: var(--text-color);
+        align-items: center;
+        flex-wrap: wrap;
       }
-      label {
-        flex: 1;
-        display: flex;
+      atelier-text {
+        flex: 0 0 200px;
         margin-bottom: var(--xxs);
+      }
+      .input {
+        margin: var(--xs) 0;
+        display: flex;
+        flex: 0 1 500px;
       }
       input {
         flex: 1;
+        padding: var(--xs) var(--xs) var(--xs) var(--xs);
+        font-family: var(--font-secondary);
+        font-size: var(--text-m);
+        border: none;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+      }
+      input::placeholder {
+        color: var(--light-grey);
+        font-style: italic;
+        font-weight: lighter;
+      }
+      @media (prefers-color-scheme: light) {
+        input {
+          background: rgba(0, 0, 0, 0.2);
+        }
+        input::placeholder {
+          color: var(--grey);
+        }
       }
     `;
   }
@@ -113,13 +140,18 @@ export default class AtelierElement extends LitElement {
 
   render() {
     return html`
-      <label for="field-${this.name}">${this.label}</label>
-      <input
-        @input="${this.handleInput}"
-        name="${this.name}"
-        id="field-${this.name}"
-        type="${this.type}"
-      />
+      <atelier-text for="field-${this.name}" tag="label"
+        >${this.label}</atelier-text
+      >
+      <div class="input">
+        <input
+          @input="${this.handleInput}"
+          name="${this.name}"
+          id="field-${this.name}"
+          type="${this.type}"
+          placeholder="${this.placeholder ? this.placeholder : ""}"
+        />
+      </div>
     `;
   }
 }
