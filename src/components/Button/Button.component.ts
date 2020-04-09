@@ -10,9 +10,9 @@ import { classMap } from "lit-html/directives/class-map";
  * @demo demo/index.html
  */
 @customElement("atelier-button")
-export default class AtelierElement extends LitElement {
+export default class ButtonElement extends LitElement {
   classes = {
-    "has-keyboard-nav": false
+    "has-keyboard-nav": false,
   };
 
   @property({ type: String })
@@ -74,7 +74,7 @@ export default class AtelierElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.ownerDocument?.addEventListener("keydown", event =>
+    this.ownerDocument?.addEventListener("keydown", (event) =>
       this.handleFirstTab(event)
     );
   }
@@ -87,7 +87,7 @@ export default class AtelierElement extends LitElement {
   handleFirstTab(e: KeyboardEvent) {
     if (e.keyCode === 9) {
       this.classes = {
-        "has-keyboard-nav": true
+        "has-keyboard-nav": true,
       };
       this.requestUpdate();
       this.ownerDocument?.removeEventListener("keydown", this.handleFirstTab);
@@ -97,6 +97,7 @@ export default class AtelierElement extends LitElement {
   render() {
     return html`
       <button
+        part="root"
         class=${classMap(this.classes)}
         type="${this.type}"
         @click="${this.clickHandler}"

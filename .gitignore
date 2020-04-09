@@ -2,3 +2,4 @@
 /.vscode/
 /dist/
 .DS_Store
+src/components/Picker/demo-members.json

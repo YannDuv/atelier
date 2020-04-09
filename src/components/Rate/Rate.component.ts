@@ -173,7 +173,11 @@ export default class AtelierElement extends LitElement {
     const isSelected = rate !== undefined && index <= rate;
     if (isSelected) classes.push("selected");
     return html`
-      <button type="button" @click="${() => this.changeRate(index)}">
+      <button
+        type="button"
+        @click="${() => this.changeRate(index)}"
+        aria-label="${index}"
+      >
         <svg viewBox="0 -28 512 512" xmlns="http://www.w3.org/2000/svg">
           <path
             class="${classes.join(" ")}"

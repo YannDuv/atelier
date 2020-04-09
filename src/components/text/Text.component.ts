@@ -1,6 +1,9 @@
 import { html, LitElement, css, customElement, property } from "lit-element";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
+type TextSize = "small" | "normal";
+type TextVariant = "low" | "normal";
+
 /**
  * `atelier-text`
  * Ceci est une description
@@ -13,6 +16,15 @@ import { unsafeHTML } from "lit-html/directives/unsafe-html";
 export default class AtelierElement extends LitElement {
   @property({ type: String })
   tag = "p";
+
+  @property({ type: String })
+  for?: string;
+
+  @property({ type: String })
+  size: TextSize = "normal";
+
+  @property({ type: String })
+  variant: TextVariant = "normal";
 
   static get styles() {
     return css`
@@ -49,18 +61,24 @@ export default class AtelierElement extends LitElement {
         margin-top: 0;
         font-family: var(--font-secondary);
       }
+      .size-small {
+        font-size: var(--text-sm);
+      }
+      .variant-low {
+        color: var(--light-grey);
+      }
     `;
   }
 
   render() {
     const template = `
-      <${this.tag}>
+      <${this.tag} for="${this.for ? this.for : ""}" class="size-${
+      this.size
+    } variant-${this.variant}" >
         <slot></slot>
       </${this.tag}>
     `;
 
-    return html`
-      ${unsafeHTML(template)}
-    `;
+    return html` ${unsafeHTML(template)} `;
   }
 }

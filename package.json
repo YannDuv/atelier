@@ -1,7 +1,7 @@
 {
   "name": "@yannduval/atelier",
   "description": "Atelier is a web component library that use simplicity for fast building applications.",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "private": false,
   "keywords": [
     "lit-element",

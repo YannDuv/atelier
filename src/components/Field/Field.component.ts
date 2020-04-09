@@ -2,7 +2,7 @@ import { html, LitElement, css, customElement, property } from "lit-element";
 import { Validator } from "../FormTypes";
 
 @customElement("atelier-field")
-export default class AtelierElement extends LitElement {
+export default class FieldElement extends LitElement {
   static formAssociated = true;
   internals: any;
 
@@ -19,8 +19,8 @@ export default class AtelierElement extends LitElement {
   placeholder?: string;
 
   @property({
-    type: String,
-    hasChanged: () => true
+    type: Object,
+    hasChanged: () => true,
   })
   validators?: Validator[];
 
@@ -28,7 +28,7 @@ export default class AtelierElement extends LitElement {
     return css`
       :host {
         display: flex;
-        margin-bottom: var(--md);
+        margin-bottom: var(--xxs);
         color: var(--text-color);
         align-items: center;
         flex-wrap: wrap;
@@ -50,6 +50,7 @@ export default class AtelierElement extends LitElement {
         border: none;
         background: rgba(0, 0, 0, 0.2);
         border-radius: 5px;
+        color: var(--text-color);
       }
       input::placeholder {
         color: var(--light-grey);
@@ -134,6 +135,8 @@ export default class AtelierElement extends LitElement {
   }
 
   handleInput() {
+    let change = new CustomEvent("field-change", { detail: this.value });
+    this.dispatchEvent(change);
     this.internals.setFormValue(this.value);
     this.checkValidity();
   }

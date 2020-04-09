@@ -14,8 +14,10 @@ html {
   --dark-grey: #525252;
 
   --text-color: var(--dark);
+  --text-color-contrast: var(--white);
   --text-color-heading: var(--dark);
   --background-color: var(--white);
+  --background-color-contrast: var(--dark);
   --font-primary: "Sen", sans-serif;
   --font-secondary: "Roboto Slab", serif;
 
@@ -73,6 +75,8 @@ html {
   html {
     --text-color-heading: var(--primary);
     --text-color: var(--white);
+    --text-color-contrast: var(--dark);
     --background-color: var(--dark);
+    --background-color-contrast: var(--white);
   }
 }
