@@ -3,7 +3,7 @@ import "../../index";
 export default {
   title: "Text",
   decorators: [],
-  parameters: {}
+  parameters: {},
 };
 
 export const Headers = () => `

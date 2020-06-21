@@ -21,8 +21,9 @@ export default class ButtonElement extends LitElement {
   static get styles() {
     return css`
       button {
+        flex: 0 1 200px;
         background: var(--primary);
-        color: var(--white);
+        color: var(--text-color-contrast);
         font-size: var(--text-m);
         padding: var(--sm) var(--md);
         border: none;
@@ -30,6 +31,11 @@ export default class ButtonElement extends LitElement {
         transition: filter 100ms ease-in-out, transform 100ms ease-in-out;
         cursor: pointer;
         outline-offset: 2px;
+      }
+      @media (max-width: 500px) {
+        button {
+          flex-grow: 1;
+        }
       }
       button:focus {
         outline: none;

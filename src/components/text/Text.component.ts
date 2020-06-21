@@ -1,8 +1,15 @@
 import { html, LitElement, css, customElement, property } from "lit-element";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
-type TextSize = "small" | "normal";
-type TextVariant = "low" | "normal";
+type TextSize = "xs" | "small" | "s" | "normal" | "l" | "xl" | "xxl";
+type TextVariant =
+  | "contrast"
+  | "low"
+  | "default"
+  | "normal"
+  | "primary"
+  | "secondary";
+type TextWeight = "thin" | "default" | "normal" | "bold";
 
 /**
  * `atelier-text`
@@ -24,7 +31,10 @@ export default class AtelierElement extends LitElement {
   size: TextSize = "normal";
 
   @property({ type: String })
-  variant: TextVariant = "normal";
+  variant: TextVariant = "default";
+
+  @property({ type: String })
+  weight: TextWeight = "default";
 
   static get styles() {
     return css`
@@ -61,11 +71,45 @@ export default class AtelierElement extends LitElement {
         margin-top: 0;
         font-family: var(--font-secondary);
       }
-      .size-small {
+      .size-xs {
+        font-size: var(--text-xs);
+      }
+      .size-small,
+      .size-s {
         font-size: var(--text-sm);
+      }
+      .size-l {
+        font-size: var(--text-l);
+      }
+      .size-xl {
+        font-size: var(--text-xl);
+      }
+      .size-xxl {
+        font-size: var(--text-xxl);
       }
       .variant-low {
         color: var(--light-grey);
+      }
+      .variant-normal {
+        color: var(--text-color);
+      }
+      .variant-primary {
+        color: var(--primary);
+      }
+      .variant-secondary {
+        color: var(--secondary);
+      }
+      .variant-constrast {
+        color: var(--text-color-contrast);
+      }
+      .weight-thin {
+        font-weight: 300;
+      }
+      .weight-normal {
+        font-weight: 400;
+      }
+      .weight-bold {
+        font-weight: bold;
       }
     `;
   }
@@ -74,7 +118,7 @@ export default class AtelierElement extends LitElement {
     const template = `
       <${this.tag} for="${this.for ? this.for : ""}" class="size-${
       this.size
-    } variant-${this.variant}" >
+    } variant-${this.variant} weight-${this.weight}" >
         <slot></slot>
       </${this.tag}>
     `;

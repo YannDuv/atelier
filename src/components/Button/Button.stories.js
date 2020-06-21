@@ -3,8 +3,10 @@ import "../../index";
 export default {
   title: "Actions/Button",
   decorators: [],
-  parameters: {}
+  parameters: {},
 };
 
 export const Button = () =>
-  '<atelier-button type="button">Clickez moi</atelier-button>';
+  `<div style="display: flex; flex-direction: column;">
+    <atelier-button type="button" style="display: flex;">Clickez moi</atelier-button>
+  </div>`;
