@@ -1,5 +1,6 @@
-import { html, LitElement, css, customElement, property } from "lit-element";
-import { classMap } from "lit-html/directives/class-map";
+import { html, LitElement, css } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map";
 
 /**
  * `atelier-button`

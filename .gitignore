@@ -1,5 +1,4 @@
-/node_modules/
-/.vscode/
-/dist/
+node_modules/
+dist/
 .DS_Store
-src/components/Picker/demo-members.json
+demo-members.json

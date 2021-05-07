@@ -1,4 +1,5 @@
-import { html, css, LitElement, customElement, property } from "lit-element";
+import { html, css, LitElement } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { Validator } from "../FormTypes";
 import FieldElement from "../Field/Field.component";
 

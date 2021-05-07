@@ -1,4 +1,5 @@
-import { html, property, LitElement, css, customElement } from "lit-element";
+import { html, LitElement, css } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { Validator } from "../FormTypes";
 
 /**
@@ -18,7 +19,7 @@ export default class AtelierElement extends LitElement {
 
   @property({
     type: String,
-    hasChanged: () => true
+    hasChanged: () => true,
   })
   validators?: Validator[];
 
@@ -194,7 +195,7 @@ export default class AtelierElement extends LitElement {
       <div class="rate-field">
         <atelier-text tag="label">${this.label}</atelier-text>
         <div class="stars">
-          ${this.hearts.map(i => this.renderHeart(i, this.rate))}
+          ${this.hearts.map((i) => this.renderHeart(i, this.rate))}
         </div>
       </div>
     `;

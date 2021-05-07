@@ -1,4 +1,5 @@
-import { html, LitElement, css, customElement, property } from "lit-element";
+import { html, LitElement, css } from "lit";
+import { customElement, property } from "lit/decorators.js";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
 type TextSize = "xs" | "small" | "s" | "normal" | "l" | "xl" | "xxl";
