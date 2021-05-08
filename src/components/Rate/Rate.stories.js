@@ -2,8 +2,6 @@ import "../../index";
 
 export default {
   title: "Form/Rate",
-  decorators: [],
-  parameters: {}
 };
 
 export const Rate = () => `

@@ -40,53 +40,51 @@ export default class PickerElement extends LitElement {
   placeholder?: string;
 
   @property({
-    type: String,
+    type: Array,
     hasChanged: () => true,
   })
   options: PickerOption[] = [];
 
   @property({
-    type: Object,
+    type: Array,
     hasChanged: () => true,
   })
   validators?: Validator[];
 
-  static get styles() {
-    return css`
-      div.atelier-picker {
-        position: relative;
-      }
-      ul {
-        position: absolute;
-        display: block;
-        background: var(--background-color-contrast);
-        color: var(--text-color-contrast);
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        z-index: 1;
-      }
-      li {
-        display: flex;
-        transition: background-color 200ms ease;
-        padding: var(--xs) var(--md);
-        cursor: pointer;
-      }
-      li:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-      }
-      li div {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        justify-content: center;
-      }
-      li img {
-        border-radius: 50%;
-        margin-right: var(--md);
-      }
-    `;
-  }
+  static styles = css`
+    div.atelier-picker {
+      position: relative;
+    }
+    ul {
+      position: absolute;
+      display: block;
+      background: var(--background-color-contrast);
+      color: var(--text-color-contrast);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+    }
+    li {
+      display: flex;
+      transition: background-color 200ms ease;
+      padding: var(--xs) var(--md);
+      cursor: pointer;
+    }
+    li:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    li div {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+    }
+    li img {
+      border-radius: 50%;
+      margin-right: var(--md);
+    }
+  `;
 
   constructor() {
     super();

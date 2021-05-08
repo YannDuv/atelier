@@ -3,12 +3,13 @@ import members from "./demo-members.json";
 
 export default {
   title: "Form/Picker",
-  decorators: [],
-  parameters: {},
 };
 
 export const Picker = () =>
-  `<form><atelier-picker label="Label" name="test-name" placeholder="Jean Michel"></atelier-picker><input type="submit" value="valider"></form>`;
+  `<form>
+    <atelier-picker label="Label" name="test-name" placeholder="Jean Michel"></atelier-picker>
+    <input type="submit" value="valider">
+  </form>`;
 
 setTimeout(() => {
   const picker = document.querySelector("atelier-picker");

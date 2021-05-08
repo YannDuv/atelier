@@ -51,6 +51,8 @@ html {
 
   --heading-line-height: 1.2;
   --body-line-height: 1.4;
+
+  --color-background-btn-secondary: red;
 }
 
 @media (min-width: 600px) {
@@ -78,5 +80,7 @@ html {
     --text-color-contrast: var(--dark);
     --background-color: var(--dark);
     --background-color-contrast: var(--white);
+
+    --color-background-btn-secondary: green;
   }
 }

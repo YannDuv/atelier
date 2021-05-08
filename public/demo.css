@@ -4,4 +4,12 @@ body {
   margin: 0;
   font-family: var(--font-primary);
   color: var(--text-color);
+  background-color: wheat;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: darkslategray;
+  }
 }
