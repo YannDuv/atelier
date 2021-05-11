@@ -2,7 +2,34 @@ import "./Text.component";
 
 export default {
   title: "Text",
+  argTypes: {
+    variant: {
+      control: {
+        type: "select",
+        options: ["primary", "secondary", "contrast", "low", "default"],
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["xs", "s", "l", "m", "xl", "xxl"],
+      },
+    },
+    weight: {
+      control: {
+        type: "select",
+        options: ["thin", "normal", "bold"],
+      },
+    },
+  },
 };
+
+const Template = ({ variant, size, weight }) =>
+  `<atelier-text variant=${variant} size=${size} weight=${weight}>Cupidatat id sint nulla non velit occaecat fugiat sit mollit non adipisicing.</p>`;
+
+export const Normal = Template.bind({});
+export const Contrast = Template.bind({});
+Contrast.args = { variant: "contrast" };
 
 export const Headers = () => `<section>
     <atelier-h1>Header 1</atelier-h1>
@@ -11,7 +38,6 @@ export const Headers = () => `<section>
     <atelier-h4>Header 4</atelier-h4>
 </section>`;
 
-        
 export const Text = () => `
 <section>
     <atelier-h2>Paragraph</atelier-h2>

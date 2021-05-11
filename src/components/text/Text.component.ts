@@ -1,16 +1,7 @@
 import { LitElement, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { html, literal } from "lit/static-html.js";
-
-type TextSize = "xs" | "small" | "s" | "normal" | "l" | "xl" | "xxl";
-type TextVariant =
-  | "contrast"
-  | "low"
-  | "default"
-  | "normal"
-  | "primary"
-  | "secondary";
-type TextWeight = "thin" | "default" | "normal" | "bold";
+import { classMap } from "lit/directives/class-map";
+import { literal, html } from "lit/static-html.js";
 
 /**
  * `atelier-text`
@@ -28,41 +19,15 @@ export class AtelierElement extends LitElement {
   for?: string;
 
   @property({ type: String })
-  size: TextSize = "normal";
+  size: TextSize = "m";
 
   @property({ type: String })
   variant: TextVariant = "default";
 
   @property({ type: String })
-  weight: TextWeight = "default";
+  weight: TextWeight = "normal";
 
   static styles = css`
-    h1 {
-      font-size: var(--text-xxl);
-      margin-bottom: var(--md);
-    }
-    h2 {
-      font-size: var(--text-xl);
-      margin-bottom: var(--sm);
-    }
-    h3 {
-      font-size: var(--text-l);
-      margin-bottom: var(--xs);
-    }
-    h4 {
-      font-size: var(--text-m);
-      margin-bottom: var(--xxs);
-    }
-    h1,
-    h2,
-    h3,
-    h4 {
-      display: block;
-      margin-top: 0;
-      font-family: var(--font-primary);
-      line-height: var(--heading-line-height);
-      color: var(--text-color-heading);
-    }
     p,
     quote,
     label,
@@ -71,52 +36,62 @@ export class AtelierElement extends LitElement {
       margin-top: 0;
       font-family: var(--font-secondary);
     }
-    .size-xs {
+    /* SIZE */
+    .xs {
       font-size: var(--text-xs);
     }
-    .size-small,
-    .size-s {
+    .small,
+    .s {
       font-size: var(--text-sm);
     }
-    .size-l {
+    .m {
+      font-size: var(--text-m);
+    }
+    .l {
       font-size: var(--text-l);
     }
-    .size-xl {
+    .xl {
       font-size: var(--text-xl);
     }
-    .size-xxl {
+    .xxl {
       font-size: var(--text-xxl);
     }
-    .variant-low {
+    /* COLOR */
+    .low {
       color: var(--light-grey);
     }
-    .variant-normal {
+    .default {
       color: var(--text-color);
     }
-    .variant-primary {
+    .primary {
       color: var(--primary);
     }
-    .variant-secondary {
+    .secondary {
       color: var(--secondary);
     }
-    .variant-constrast {
+    .contrast {
       color: var(--text-color-contrast);
     }
-    .weight-thin {
+    /* WEIGHT */
+    .thin {
       font-weight: 300;
     }
-    .weight-normal {
+    .normal {
       font-weight: 400;
     }
-    .weight-bold {
-      font-weight: bold;
+    .bold {
+      font-weight: 700;
     }
   `;
+
+  get classes() {
+    return { [this.variant]: true, [this.weight]: true, [this.size]: true };
+  }
 
   render() {
     return html`<${this.tag}
       for="${this.for ?? ""}"
-      class="size-${this.size} variant-${this.variant} weight-${this.weight}"
+      class=${classMap(this.classes)}
     >
       <slot></slot>
     </${this.tag}>`;
@@ -126,17 +101,50 @@ export class AtelierElement extends LitElement {
 @customElement("atelier-h1")
 export class AtelierH1 extends AtelierElement {
   tag = literal`h1`;
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        h1,
+        h2,
+        h3,
+        h4 {
+          display: block;
+          margin-top: 0;
+          font-family: var(--font-primary);
+          line-height: var(--heading-line-height);
+          color: var(--text-color-heading) !important;
+        }
+        h1 {
+          font-size: var(--text-xxl);
+          margin-bottom: var(--md);
+        }
+        h2 {
+          font-size: var(--text-xl);
+          margin-bottom: var(--sm);
+        }
+        h3 {
+          font-size: var(--text-l);
+          margin-bottom: var(--xs);
+        }
+        h4 {
+          font-size: var(--text-m);
+          margin-bottom: var(--xxs);
+        }
+      `,
+    ];
+  }
 }
 @customElement("atelier-h2")
-export class AtelierH2 extends AtelierElement {
+export class AtelierH2 extends AtelierH1 {
   tag = literal`h2`;
 }
 @customElement("atelier-h3")
-export class AtelierH3 extends AtelierElement {
+export class AtelierH3 extends AtelierH1 {
   tag = literal`h3`;
 }
 @customElement("atelier-h4")
-export class AtelierH4 extends AtelierElement {
+export class AtelierH4 extends AtelierH1 {
   tag = literal`h4`;
 }
 @customElement("atelier-p")
@@ -147,12 +155,14 @@ export class AtelierP extends AtelierElement {
 export class AtelierQuote extends AtelierElement {
   tag = literal`quote`;
 
-  static styles = [
-    super.styles,
-    css`
-      quote {
-        font-style: italic;
-      }
-    `,
-  ];
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        quote {
+          font-style: italic;
+        }
+      `,
+    ];
+  }
 }

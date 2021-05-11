@@ -10,6 +10,16 @@
     <link href="/design-tokens.css" rel="stylesheet" />
     <link href="/demo.css" rel="stylesheet" />
     <script type="module" src="/src/index.ts"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Sen:wght@300;400;600&display=swap"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:wght@300;400;600&display=swap"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <article>
@@ -41,19 +51,19 @@
         );
         rateField.validators = [
           {
-            isValid: value => value !== undefined,
-            message: "Il faut voter !"
-          }
+            isValid: (value) => value !== undefined,
+            message: "Il faut voter !",
+          },
         ];
         firstNameField.validators = [
           {
-            isValid: value => value !== "",
-            message: "Le prénom doit être renseigné"
+            isValid: (value) => value !== "",
+            message: "Le prénom doit être renseigné",
           },
           {
-            isValid: value => value !== "toto",
-            message: "Le prénom doit être réaliste"
-          }
+            isValid: (value) => value !== "toto",
+            message: "Le prénom doit être réaliste",
+          },
         ];
       </script>
     </article>

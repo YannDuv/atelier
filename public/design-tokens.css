@@ -52,7 +52,7 @@ html {
   --heading-line-height: 1.2;
   --body-line-height: 1.4;
 
-  --color-background-btn-secondary: red;
+  --color-background-btn-secondary: var(--secondary);
 }
 
 @media (min-width: 600px) {
@@ -82,5 +82,18 @@ html {
     --background-color-contrast: var(--white);
 
     --color-background-btn-secondary: green;
+  }
+}
+
+html {
+  --card-boxShadow: 1px 1px 10px 1px #ffd0009d;
+  --card-background: #f4f0e9;
+  --card-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --card-boxShadow: 1px 1px 10px 1px #52d1cbbe;
+    --card-background: var(--dark-grey);
   }
 }
