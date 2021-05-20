@@ -4,15 +4,18 @@ export default {
   title: "Actions/Button",
   argTypes: {
     variant: {
+      options: ["primary", "secondary"],
       control: {
         type: "select",
-        options: ["primary", "secondary"],
+        labels: {
+          primary: "Primary",
+          secondary: "Secondary",
+        },
       },
     },
     disabled: {
       control: {
         type: "boolean",
-        default: false,
       },
     },
     label: {
@@ -21,9 +24,15 @@ export default {
       },
     },
   },
+  args: {
+    disabled: false,
+    label: "Label",
+    variant: "primary",
+  },
+  component: "atelier-button",
 };
 
-const Template = ({ label = "Label", variant, disabled }: any) => `<div
+const Template = ({ label, variant, disabled }: any) => `<div
   style="display: flex; flex-direction: column;"
 >
   <atelier-button variant="${variant}" ${

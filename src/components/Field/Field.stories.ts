@@ -3,7 +3,8 @@ import "../../index";
 export default {
   title: "Form/Field",
   decorators: [],
-  parameters: {}
+  parameters: {},
+  component: "atelier-field",
 };
 
 export const TextField = () =>

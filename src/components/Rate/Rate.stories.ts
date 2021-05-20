@@ -2,6 +2,7 @@ import "../../index";
 
 export default {
   title: "Form/Rate",
+  component: "atelier-spinner",
 };
 
 export const Rate = () => `

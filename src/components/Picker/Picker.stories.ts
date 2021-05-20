@@ -3,6 +3,7 @@ import members from "./demo-members.json";
 
 export default {
   title: "Form/Picker",
+  component: "atelier-picker",
 };
 
 export const Picker = () =>

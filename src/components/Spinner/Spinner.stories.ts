@@ -4,15 +4,16 @@ export default {
   title: "Spinner",
   argTypes: {
     variant: {
+      options: ["primary", "secondary"],
       control: {
         type: "select",
-        options: ["primary", "secondary"],
       },
     },
   },
+  component: "atelier-spinner",
 };
 
-const Template = ({ variant }) =>
+const Template = ({ variant }: { variant: "primary" | "secondary" }) =>
   `<atelier-spinner variant=${variant}></atelier-spinner>`;
 
 export const Primary = Template.bind({});

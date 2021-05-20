@@ -2,6 +2,7 @@ import "./Card.component";
 
 export default {
   title: "Card",
+  component: "atelier-card",
 };
 
 const Template = () => `<atelier-card>

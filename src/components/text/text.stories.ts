@@ -4,24 +4,25 @@ export default {
   title: "Text",
   argTypes: {
     variant: {
+      options: ["primary", "secondary", "contrast", "low", "default"],
       control: {
         type: "select",
-        options: ["primary", "secondary", "contrast", "low", "default"],
       },
     },
     size: {
+      options: ["xs", "s", "l", "m", "xl", "xxl"],
       control: {
         type: "select",
-        options: ["xs", "s", "l", "m", "xl", "xxl"],
       },
     },
     weight: {
+      options: ["thin", "normal", "bold"],
       control: {
         type: "select",
-        options: ["thin", "normal", "bold"],
       },
     },
   },
+  component: "atelier-text",
 };
 
 const Template = ({ variant, size, weight }) =>

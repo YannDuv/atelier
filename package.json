@@ -8,12 +8,15 @@
     "web-components",
     "design-system"
   ],
+  "customElements": "custom-elements.json",
   "author": "Yann Duval <yann.duval@gmx.fr>",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
     "build-storybook": "build-storybook",
-    "storybook": "start-storybook -s public -p 6006"
+    "storybook": "start-storybook -s public -p 6006",
+    "analyze": "npx web-component-analyzer 'src/**/*.{js,ts}' --outFile custom-elements.json",
+    "prepare": "npm run analyze"
   },
   "main": "./dist/index.js",
   "files": [
@@ -25,11 +28,12 @@
   },
   "devDependencies": {
     "@babel/core": "7.14.0",
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/web-components": "^6.2.9",
+    "@storybook/addon-actions": "6.3.0-alpha.35",
+    "@storybook/addon-essentials": "6.3.0-alpha.35",
+    "@storybook/addon-links": "6.3.0-alpha.35",
+    "@storybook/web-components": "6.3.0-alpha.35",
     "babel-loader": "8.2.2",
+    "custom-elements-manifest": "0.1.0",
     "lit-html": "^1.4.1",
     "storybook": "6.2.9",
     "ts-lit-plugin": "1.2.1",

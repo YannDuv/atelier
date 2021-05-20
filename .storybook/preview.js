@@ -1,3 +1,7 @@
+import { addParameters, setCustomElements } from "@storybook/web-components";
+import customElements from "../custom-elements.json";
+
+setCustomElements(customElements);
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -7,4 +11,10 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+addParameters({
+  docs: {
+    inlineStories: false,
+  },
+});
