@@ -2,6 +2,7 @@ import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { Validator } from "../FormTypes";
 import FieldElement from "../Field/Field.component";
+import { styleMap } from "lit/directives/style-map.js";
 
 type PickerOption = {
   value: string | number;
@@ -13,14 +14,6 @@ type PickerOption = {
 const EMPTY: any[] = [];
 const OPTIONS_MAX = 6;
 
-/**
- * `atelier-picker`
- * Ceci est une description
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
 @customElement("atelier-picker")
 export default class PickerElement extends LitElement {
   static formAssociated = true;
@@ -58,7 +51,7 @@ export default class PickerElement extends LitElement {
     ul {
       position: absolute;
       display: block;
-      background: var(--background-color-contrast);
+      background: var(--bg-color-contrast);
       color: var(--text-color-contrast);
       list-style: none;
       margin: 0;
@@ -98,12 +91,17 @@ export default class PickerElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.onfocus = () => this.input?.input?.focus();
+    this.onfocus = () => this.input?.focus();
     this.checkValidity();
   }
 
-  get input(): FieldElement | undefined | null {
-    return this.shadowRoot?.querySelector("atelier-field");
+  get inputShadow(): FieldElement | undefined | null {
+    // @ts-ignore
+    return this.renderRoot?.activeElement;
+  }
+
+  get input(): HTMLInputElement | undefined | null {
+    return this.inputShadow?.input;
   }
 
   get form() {
@@ -119,13 +117,18 @@ export default class PickerElement extends LitElement {
   }
 
   get listOffset() {
-    const left = this.input?.input?.getBoundingClientRect().left;
-    return left ? `${left}px` : 0;
+    const clientRect = this.input?.getBoundingClientRect();
+    return clientRect ? `${clientRect.left}px` : "0";
   }
 
   get listwidth() {
-    const width = this.input?.input?.getBoundingClientRect().width;
-    return width ? `${width}px` : 0;
+    const width = this.input?.getBoundingClientRect().width;
+    return width ? `${width}px` : "0";
+  }
+
+  get listTop() {
+    const clientRect = this.input?.getBoundingClientRect();
+    return clientRect ? `${clientRect.bottom}px` : "0";
   }
 
   checkValidity() {
@@ -163,10 +166,10 @@ export default class PickerElement extends LitElement {
       this.internals.setFormValue(this.value);
     }
     this.checkValidity();
-    if (!this.input) {
+    if (!this.inputShadow) {
       return;
     }
-    this.input.value = this.selected?.title || "";
+    this.inputShadow.value = this.selected?.title || "";
     this.filteredOptions = EMPTY;
     this.requestUpdate();
   }
@@ -223,10 +226,8 @@ export default class PickerElement extends LitElement {
         ? html`<picture><img src="${thumbs[0]}" alt="" /></picture>`
         : null}
       <div>
-        <atelier-text tag="span">${title}</atelier-text>
-        <atelier-text tag="span" variant="low" size="small"
-          >${subtitle}</atelier-text
-        >
+        <atelier-text variant="contrast">${title}</atelier-text>
+        <atelier-text variant="low" size="small">${subtitle}</atelier-text>
       </div>
     </li>`;
   }
@@ -234,6 +235,7 @@ export default class PickerElement extends LitElement {
   render() {
     return html`<div class="atelier-picker">
       <atelier-field
+        id="field"
         label="${this.label}"
         name="${this.name}"
         placeholder="${this.placeholder}"
@@ -242,10 +244,12 @@ export default class PickerElement extends LitElement {
         @keypress=${this.handleKeyPress}
       ></atelier-field>
       <ul
-        style="left: ${this.listOffset}; width: ${this
-          .listwidth}; visibility: ${this.isListVisible
-          ? "visible"
-          : "collapse"}"
+        style=${styleMap({
+          left: this.listOffset,
+          width: this.listwidth,
+          top: this.listTop,
+          visibility: this.isListVisible ? "visible" : "collapse",
+        })}
       >
         ${this.filteredOptions.map((o) => this.renderOption(o))}
       </ul>

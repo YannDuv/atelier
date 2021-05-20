@@ -24,6 +24,9 @@ export class ButtonElement extends LitElement {
   @property({ type: String })
   type = "button";
 
+  @property({ type: Boolean })
+  disabled = false;
+
   @property({
     type: String,
     converter: {
@@ -34,47 +37,70 @@ export class ButtonElement extends LitElement {
 
   static styles = css`
     button {
-      flex: 0 1 200px;
-      color: var(--text-color-contrast);
+      flex: 0 1 60px;
+      border-radius: var(--btn-border-radius);
       font-size: var(--text-m);
-      padding: var(--sm) var(--md);
-      border: none;
-      border-radius: 5px;
-      transition: filter 100ms ease-in-out, transform 100ms ease-in-out;
+      padding: var(--btn-padding-vertical) var(--btn-padding-horizontal);
+      transition: background-color 200ms ease, transform 100ms ease-in-out;
       cursor: pointer;
-      outline-offset: 2px;
+      outline: none;
+    }
+    button ::slotted(*) {
+      font-weight: var(--btn-text-weight);
+    }
+    button:active {
+      transform: scale(0.95) translateZ(-2px);
+    }
+    button:active ::slotted(*) {
+      color: var(--btn-text-color-active);
+    }
+    button:disabled {
+      background-color: var(--btn-bg-color-disabled);
+      border: var(--btn-border-disabled);
+    }
+    button:disabled ::slotted(*) {
+      color: var(--btn-text-color-disabled);
     }
     .btn--primary {
-      background: var(--primary);
+      background: var(--btn-bg-color-primary);
+      border: var(--btn-border-primary);
+    }
+    .btn--primary:hover {
+      background-color: var(--btn-bg-color-primary-hover);
+    }
+    .btn--primary:focus {
+      border: var(--btn-border-primary-focus);
+    }
+    .btn--primary:active {
+      background-color: var(--btn-bg-color-primary-active);
+    }
+    .btn--primary ::slotted(*) {
+      color: var(--btn-text-color-primary);
     }
     .btn--secondary {
-      background: var(--color-background-btn-secondary);
+      background: var(--btn-bg-color-secondary);
+      border: var(--btn-border-secondary);
+    }
+    .btn--secondary:hover {
+      background-color: var(--btn-bg-color-secondary-hover);
+      border: var(--btn-border-secondary-hover);
+    }
+    .btn--secondary:focus {
+      border: var(--btn-border-secondary-focus);
+    }
+    .btn--secondary:active {
+      background-color: var(--btn-bg-color-secondary-active);
+      border: var(--btn-border-secondary-active);
+    }
+    .btn--secondary ::slotted(*) {
+      color: var(--btn-text-color-secondary);
+    }
+    .btn--secondary:hover ::slotted(*) {
+      color: var(--btn-text-color-secondary-hover);
     }
     @media (max-width: 500px) {
       button {
         flex-grow: 1;
-      }
-    }
-    button:focus {
-      outline: none;
-    }
-    button.has-keyboard-nav:focus {
-      outline: var(--primary) solid 2px;
-    }
-    button:active {
-      transform: scale(0.95) translateZ(-2px);
-      filter: drop-shadow(1px 0px 1px #00000057);
-    }
-    button:hover:not(:active) {
-      filter: drop-shadow(1px 1px 3px #00000057);
-      transition: filter 400ms ease-in;
-    }
-    @media (prefers-color-scheme: dark) {
-      button:active {
-        filter: drop-shadow(1px 0px 1px #ffffff70);
-      }
-      button:hover:not(:active) {
-        filter: drop-shadow(1px 1px 3px #ffffff70);
       }
     }
   `;
@@ -127,6 +153,7 @@ export class ButtonElement extends LitElement {
         })}
         type="button"
         @click="${this.clickHandler}"
+        ?disabled=${this.disabled}
       >
         <atelier-text tag="span"><slot></slot></atelier-text>
       </button>

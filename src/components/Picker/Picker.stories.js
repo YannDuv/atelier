@@ -8,7 +8,6 @@ export default {
 export const Picker = () =>
   `<form>
     <atelier-picker label="Label" name="test-name" placeholder="Jean Michel"></atelier-picker>
-    <input type="submit" value="valider">
   </form>`;
 
 setTimeout(() => {
@@ -25,4 +24,4 @@ setTimeout(() => {
       message: "Il faut décider !",
     },
   ];
-}, 500);
+}, 1000);

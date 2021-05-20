@@ -1,13 +1,24 @@
 html {
-  --white: white;
-  --dark: #1f1f1f;
+  --white: #ffffff;
+  --dark: #161616;
 
-  --primary: #52d1ca;
-  --secondary: #ffd000;
+  --primary: #ffd000;
+  --secondary: #002acc;
 
   --sucess: green;
   --warning: orange;
   --error: red;
+
+  --grey-000: #ffffff;
+  --grey-100: #f5f5f5;
+  --grey-200: #e9e9e9;
+  --grey-300: #cccccc;
+  --grey-400: #bdbdbd;
+  --grey-500: #999999;
+  --grey-600: #666666;
+  --grey-700: #333333;
+  --grey-800: #252525;
+  --grey-900: #161616;
 
   --light-grey: #b6b6b6;
   --grey: #969696;
@@ -16,10 +27,10 @@ html {
   --text-color: var(--dark);
   --text-color-contrast: var(--white);
   --text-color-heading: var(--dark);
-  --background-color: var(--white);
-  --background-color-contrast: var(--dark);
+  --bg-color: var(--white);
+  --bg-color-contrast: var(--dark);
   --font-primary: "Sen", sans-serif;
-  --font-secondary: "Roboto Slab", serif;
+  --font-secondary: "Montserrat", serif;
 
   --breakpoint-m: 1200px;
   --breakpoint-s: 600px;
@@ -34,7 +45,7 @@ html {
   --xxl: calc(5.25 * var(--space-unit));
 
   --text-base-size: 1em;
-  --text-scale-ratio: 1.2;
+  --text-scale-ratio: 0.8;
 
   --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
   --text-s: calc(1em / var(--text-scale-ratio));
@@ -51,8 +62,6 @@ html {
 
   --heading-line-height: 1.2;
   --body-line-height: 1.4;
-
-  --color-background-btn-secondary: var(--secondary);
 }
 
 @media (min-width: 600px) {
@@ -60,7 +69,7 @@ html {
     --heading-line-height: 1.5;
     --space-unit: 1.25em;
     --text-base-size: 1.25em;
-    --text-scale-ratio: 1.25;
+    --text-scale-ratio: 1;
   }
 }
 
@@ -78,19 +87,50 @@ html {
     --text-color-heading: var(--primary);
     --text-color: var(--white);
     --text-color-contrast: var(--dark);
-    --background-color: var(--dark);
-    --background-color-contrast: var(--white);
-
-    --color-background-btn-secondary: green;
+    --bg-color: var(--dark);
+    --bg-color-contrast: var(--white);
   }
 }
 
+/********************* BUTTON *********************/
+html {
+  --light-primary: #ffe366;
+  --btn-border-radius: 8px;
+  --btn-padding-horizontal: 14px;
+  --btn-padding-vertical: 12px;
+  --btn-bg-color-disabled: var(--grey-300);
+  --btn-border-disabled: solid 1px var(--grey-300);
+  --btn-text-weight: 600;
+  --btn-text-color-active: var(--dark);
+  --btn-text-color-disabled: var(--grey-600);
+
+  --btn-bg-color-primary: var(--primary);
+  --btn-bg-color-primary-hover: var(--light-primary);
+  --btn-bg-color-primary-active: var(--white);
+  --btn-text-color-primary: var(--dark);
+  --btn-border-primary: solid 1px var(--primary);
+  --btn-border-primary-focus: solid 1px var(--dark);
+
+  --btn-bg-color-secondary: transparent;
+  --btn-bg-color-secondary-hover: var(--light-primary);
+  --btn-bg-color-secondary-active: var(--white);
+  --btn-text-color-secondary: var(--primary);
+  --btn-text-color-secondary-hover: var(--dark);
+  --btn-border-secondary: solid 1px var(--primary);
+  --btn-border-secondary-hover: solid 1px var(--light-primary);
+  --btn-border-secondary-active: solid 1px var(--white);
+}
+@media (prefers-color-scheme: dark) {
+  html {
+  }
+}
+
+/********************* CARD *********************/
 html {
   --card-boxShadow: 1px 1px 10px 1px #ffd0009d;
   --card-background: #f4f0e9;
   --card-radius: 4px;
 }
-
 @media (prefers-color-scheme: dark) {
   html {
     --card-boxShadow: 1px 1px 10px 1px #52d1cbbe;
